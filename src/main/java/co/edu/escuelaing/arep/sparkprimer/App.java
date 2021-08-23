@@ -3,9 +3,16 @@ package co.edu.escuelaing.arep.sparkprimer;
 import java.io.IOException;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+
 import spark.Request;
 import spark.Response;
+import spark.Filter;
+
 import static spark.Spark.*;
+import static spark.Spark.port;
+import static spark.Spark.get;
+import static spark.Spark.after;
+
 /**
  * Hello world!
  *
@@ -16,9 +23,15 @@ public class App
         port(getPort());
         staticFiles.location("/public");
         
+        after((Filter) (request, response) -> {
+            response.header("Access-Control-Allow-Origin", "*");
+            response.header("Access-Control-Allow-Methods", "GET");
+        });
+
         get("/inputdata", (req, res) -> inputDataPage(req, res));
         get("/results", (req, res) -> resultsPage(req, res));
         get("/facadealpha", "application/json",(req, res) -> facadeAlpha(req,res));
+        
     }
 
     private static String inputDataPage(Request req, Response res) {
