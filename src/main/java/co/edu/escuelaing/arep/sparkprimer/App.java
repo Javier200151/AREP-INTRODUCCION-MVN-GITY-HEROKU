@@ -13,8 +13,9 @@ import static spark.Spark.*;
 public class App 
 {
     public static void main(String[] args) {
-        staticFiles.location("/public");
         port(getPort());
+        staticFiles.location("/public");
+        
         get("/inputdata", (req, res) -> inputDataPage(req, res));
         get("/results", (req, res) -> resultsPage(req, res));
         get("/facadealpha", "application/json",(req, res) -> facadeAlpha(req,res));
@@ -63,12 +64,10 @@ public class App
     private static String facadeAlpha(Request req, Response res) {
         String response = "None";
         try {
-            response = HttpConnection.alphaTimeSeriesDaily(req, res);
+            response = HttpConnection.alphaTimeSeriesDaily(req);
         }catch(IOException ex){
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
         return response;
     }
-
-
 }

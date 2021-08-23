@@ -14,11 +14,12 @@ public class HttpConnection {
 
     private static final String USER_AGENT = "Mozilla/5.0";
     private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={}&apikey=M5YQXIJS8FS5S4F2";
+    private static final String GET_URL_TEST = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=M5YQXIJS8FS5S4F2";
 
-    public static String alphaTimeSeriesDaily(Request request, Response response) throws IOException {
+    public static String alphaTimeSeriesDaily(Request request) throws IOException {
         String finalURL = String.format(GET_URL, request.queryParams("symbol"));
         String responseStr = "None";
-        URL obj = new URL(finalURL);
+        URL obj = new URL(GET_URL_TEST);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("User-Agent", USER_AGENT);
@@ -31,10 +32,10 @@ public class HttpConnection {
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     con.getInputStream()));
             String inputLine;
-            StringBuffer res = new StringBuffer();
+            StringBuffer response = new StringBuffer();
 
             while ((inputLine = in.readLine()) != null) {
-                res.append(inputLine);
+                response.append(inputLine);
             }
             in.close();
             responseStr = response.toString();
