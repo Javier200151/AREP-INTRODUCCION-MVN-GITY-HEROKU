@@ -23,8 +23,10 @@ public class HttpConnection {
         Cache cache = Cache.getInstance();
         String responseStr = "None";
 
-        if (cache.cacheContainer.containsKey(request.queryParams("symbol")) ){
-            responseStr = cache.cacheContainer.get(request.queryParams("symbol"));
+        String KeyCache = request.queryParams("symbol") +  request.queryParams("time");
+
+        if (cache.cacheContainer.containsKey(KeyCache)){
+            responseStr = cache.cacheContainer.get(KeyCache);
         }else {
         
             String finalURL = String.format(GET_URL, request.queryParams("time"), request.queryParams("symbol"));
@@ -51,7 +53,7 @@ public class HttpConnection {
                 in.close();
                 responseStr = response.toString();
                 
-                cache.cacheContainer.put(request.queryParams("symbol") , responseStr);
+                cache.cacheContainer.put(KeyCache, responseStr);
                     
                 } else {
                     System.out.println("GET request not worked");
