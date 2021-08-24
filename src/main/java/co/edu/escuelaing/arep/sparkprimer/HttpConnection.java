@@ -13,7 +13,7 @@ import static spark.Spark.*;
 public class HttpConnection {
 
     private static final String USER_AGENT = "Mozilla/5.0";
-    private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=%s&apikey=Q1QZFVJQ21K7C6XM";
+    private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=%s&apikey=M5YQXIJS8FS5S4F2";
     //private static final String GET_URL_TEST = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=M5YQXIJS8FS5S4F2";
 
     public static String alphaTimeSeriesDaily(Request request) throws IOException {
