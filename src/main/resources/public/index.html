@@ -20,9 +20,26 @@
                         <br>
                         <button type="button" class="btn btn-dark" onclick="symbolJSON()">Search</button>
                     </h2>
+                    <br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="time" id="Daily" checked>
+                        <label class="form-check-label" for="Daily">
+                          Daily
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="time" id="Weekly" value="TIME_SERIES_WEEKLY">
+                        <label class="form-check-label" for="Weekly">
+                          Weekly
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="time" id="Monthly" value="TIME_SERIES_MONTHLY">
+                        <label class="form-check-label" for="Monthly">
+                          Monthly
+                        </label>
+                    </div>
                 </div>
-
-                
 
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                     
@@ -44,6 +61,8 @@
                     </table>
                   
                 </div>
+
+                
         
             </section>
         </main>

@@ -13,11 +13,12 @@ import static spark.Spark.*;
 public class HttpConnection {
 
     private static final String USER_AGENT = "Mozilla/5.0";
-    private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=%s&apikey=M5YQXIJS8FS5S4F2";
+    private static final String GET_URL = "https://www.alphavantage.co/query?function=%s&symbol=%s&apikey=M5YQXIJS8FS5S4F2";
     //private static final String GET_URL_TEST = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=M5YQXIJS8FS5S4F2";
 
     public static String alphaTimeSeriesDaily(Request request) throws IOException {
-        String finalURL = String.format(GET_URL, request.queryParams("symbol"));
+        String finalURL = String.format(GET_URL, request.queryParams("time"), request.queryParams("symbol"));
+        System.out.println(finalURL);
         String responseStr = "None";
         URL obj = new URL(finalURL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -41,7 +42,7 @@ public class HttpConnection {
             responseStr = response.toString();
 
             // print result
-            System.out.println(response.toString());
+            //System.out.println(response.toString());
         } else {
             System.out.println("GET request not worked");
         }
