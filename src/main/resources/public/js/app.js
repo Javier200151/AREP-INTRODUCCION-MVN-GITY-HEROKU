@@ -4,7 +4,7 @@ function symbolJSON(){
     let result = {};
     var symbol = document.getElementById("symbol").value;
 
-    fetch('https://sparkwebback.herokuapp.com/facadealpha?symbol='+symbol)
+    fetch('https://sparkwebapparep.herokuapp.com/facadealpha?symbol='+symbol)
         .then(res => res.json())
         .then(data => result = data)
         .then(data => {
