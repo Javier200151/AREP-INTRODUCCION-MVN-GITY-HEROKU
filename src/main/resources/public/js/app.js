@@ -8,7 +8,7 @@ function symbolJSON(){
 
     console.log(time);
 
-    fetch('https://sparkwebapparep.herokuapp.com/facadealpha?symbol='+symbol+'&time='+time)
+    fetch('http://localhost:4567/facadealpha?symbol='+symbol+'&time='+time)
         .then(res => res.json())
         .then(data => result = data)
         .then(data => {
@@ -33,5 +33,5 @@ function symbolJSON(){
                     
                 }
         })
-        //.catch(error => console.log(error))
+        .catch(error => console.log(error))
 }
