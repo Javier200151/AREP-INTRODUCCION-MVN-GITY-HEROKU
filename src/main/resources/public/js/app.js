@@ -6,9 +6,7 @@ function symbolJSON(){
     else if(document.getElementById("Weekly").checked == true){ time = "TIME_SERIES_WEEKLY" }
     else if(document.getElementById("Monthly").checked == true){ time = "TIME_SERIES_MONTHLY" }
 
-    console.log(time);
-
-    fetch('http://localhost:4567/facadealpha?symbol='+symbol+'&time='+time)
+    fetch('https://sparkwebapparep.herokuapp.com/facadealpha?symbol='+symbol+'&time='+time)
         .then(res => res.json())
         .then(data => result = data)
         .then(data => {
