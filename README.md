@@ -9,6 +9,11 @@ Este desarrollo es una aplicación para consultar el mercado de valores de las a
 * Maven - Gestor de dependencias
 * JUnit - Pruebas unitarias
 
+# Lenguajes
+* HTTP
+* JavaScript
+* Java
+
 ## Pre-Requisitos
 * Tener git instalado
 * Tener maven instalado
@@ -19,4 +24,11 @@ Esta aplicación se encuentra desplegada en Heroku, por esta razón para poder p
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://sparkwebapparep.herokuapp.com/)
 
-## Modificaciones
+## Diseño
+
+![](images/ArquitecturaSimpleEjercicio.png)
+
+* Se esta usando el API gratuito https://www.alphavantage.co/documentation, se creo un servidor fachada exponiendo servicios REST y un cliente escrito en JS invocando estos servicios.
+* Se implemento un Cache Singleton, sacrificando memoria en pro de no realizar consultas repetidas a la API.
+* Aplicación desplegada en Heroku usando sparkweb
+* Para la extensibilidad se agrega una nueva función al servidor fachada que llame a la API externa
